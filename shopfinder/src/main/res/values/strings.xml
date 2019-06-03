@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Shop Finder</string>
+    <string name="base_url">http://www.mocky.io/v2/5b7e8bc03000005c0084c210</string>
 </resources>
