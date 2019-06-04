@@ -1,4 +1,4 @@
-package com.gitzblitz.shopfinder
+package com.gitzblitz.shopfinder.utils
 
 import android.os.Handler
 import android.os.Looper

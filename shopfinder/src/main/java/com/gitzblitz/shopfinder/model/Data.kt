@@ -1,4 +1,4 @@
-package com.gitzblitz.shopfinder
+package com.gitzblitz.shopfinder.model
 import com.squareup.moshi.Json
 
 
