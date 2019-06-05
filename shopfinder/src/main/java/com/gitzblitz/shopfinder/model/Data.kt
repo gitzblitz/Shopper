@@ -9,25 +9,25 @@ data class Data(
 
 data class City(
     @Json(name = "id")
-    val id: Int,
+    var id: Int = -1,
     @Json(name = "malls")
-    val malls: List<Mall>,
+    var malls: List<Mall> = listOf(),
     @Json(name = "name")
-    val name: String
+    var name: String = ""
 )
 
 data class Mall(
     @Json(name = "id")
-    val id: Int,
+    val id: Int = -1,
     @Json(name = "name")
-    val name: String,
+    val name: String = "",
     @Json(name = "shops")
-    val shops: List<Shop>
+    val shops: List<Shop> = listOf()
 )
 
 data class Shop(
     @Json(name = "id")
-    val id: Int,
+    val id: Int = -1,
     @Json(name = "name")
-    val name: String
+    val name: String = ""
 )
