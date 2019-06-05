@@ -11,20 +11,20 @@ object ServiceImpl {
 
 
     fun getCities(): List<City> {
-        var cities2 = listOf<City>()
+        var cities = listOf<City>()
 
         service.getAllCities()
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
-            .subscribe({ cities ->
-                cities.let {
-                    cities2 = it ?: listOf()
+            .subscribe({ result ->
+                result.let {
+                    cities = it ?: listOf()
                 }
             }, {
 
             })
 
-        return cities2
+        return cities
 
     }
 
