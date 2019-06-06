@@ -1,4 +1,4 @@
-package com.gitzblitz.shopfinder
+package com.gitzblitz.shopfinder.webservice
 
 import com.gitzblitz.shopfinder.model.*
 import io.reactivex.Single

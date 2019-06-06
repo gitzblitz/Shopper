@@ -1,6 +1,7 @@
-package com.gitzblitz.shopfinder
+package com.gitzblitz.shopfinder.webservice
 
 import android.util.Log
+import com.gitzblitz.shopfinder.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -30,7 +31,9 @@ object ServiceGenerator {
         .build()
 
 
-    fun provideWebService(): Webservice = getRetrofitAdapter("http://www.mocky.io/v2/5b7e8bc03000005c0084c210/").create(Webservice::class.java)
+    fun provideWebService(): Webservice = getRetrofitAdapter(
+        "http://www.mocky.io/v2/5b7e8bc03000005c0084c210/"
+    ).create(Webservice::class.java)
 
 
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {

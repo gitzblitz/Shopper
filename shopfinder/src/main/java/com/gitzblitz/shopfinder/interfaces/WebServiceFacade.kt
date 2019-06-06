@@ -1,6 +1,6 @@
 package com.gitzblitz.shopfinder.interfaces
 
-import com.gitzblitz.shopfinder.ServiceImpl
+import com.gitzblitz.shopfinder.webservice.ServiceImpl
 import com.gitzblitz.shopfinder.model.City
 import com.gitzblitz.shopfinder.model.Mall
 import com.gitzblitz.shopfinder.model.Shop

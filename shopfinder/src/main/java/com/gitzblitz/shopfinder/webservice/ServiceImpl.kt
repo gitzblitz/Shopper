@@ -1,12 +1,9 @@
-package com.gitzblitz.shopfinder
+package com.gitzblitz.shopfinder.webservice
 
-import android.util.Log
 import com.gitzblitz.shopfinder.model.City
-import com.gitzblitz.shopfinder.model.Data
 import com.gitzblitz.shopfinder.model.Mall
 import com.gitzblitz.shopfinder.model.Shop
 import com.gitzblitz.shopfinder.utils.WebServiceError
-import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
 object ServiceImpl {
