@@ -3,6 +3,7 @@ package com.gitzblitz.shopfinder
 import com.gitzblitz.shopfinder.model.City
 import com.gitzblitz.shopfinder.model.Mall
 import com.gitzblitz.shopfinder.model.Shop
+import com.gitzblitz.shopfinder.utils.WebServiceError
 import io.reactivex.schedulers.Schedulers
 
 object ServiceImpl {
@@ -16,14 +17,12 @@ object ServiceImpl {
         service.getAllCities()
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
-            .subscribe({ result ->
+            .subscribe { result, error ->
                 result.let {
-                    cities = it ?: listOf()
+                    cities = it.cities
                 }
-            }, {
-
-            })
-
+                WebServiceError.handleError(error)
+            }
         return cities
 
     }
@@ -37,8 +36,7 @@ object ServiceImpl {
                 result.let {
                     malls = it ?: listOf()
                 }
-
-                error.printStackTrace()
+                WebServiceError.handleError(error)
             }
 
         return malls
@@ -50,7 +48,7 @@ object ServiceImpl {
             .subscribeOn(Schedulers.io())
             .subscribe { result, error ->
                 mall = result
-                error.printStackTrace()
+                WebServiceError.handleError(error)
             }
 
         return mall
@@ -62,8 +60,7 @@ object ServiceImpl {
             .subscribeOn(Schedulers.io())
             .subscribe { result, error ->
                 city = result
-
-                error.printStackTrace()
+                WebServiceError.handleError(error)
             }
 
         return city
@@ -76,13 +73,11 @@ object ServiceImpl {
             .subscribeOn(Schedulers.io())
             .subscribe { result, error ->
                 shop = result
-
-                error.printStackTrace()
+                WebServiceError.handleError(error)
             }
 
         return shop
 
     }
-
 
 }

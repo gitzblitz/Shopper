@@ -1,8 +1,6 @@
 package com.gitzblitz.shopfinder
 
-import com.gitzblitz.shopfinder.model.City
-import com.gitzblitz.shopfinder.model.Mall
-import com.gitzblitz.shopfinder.model.Shop
+import com.gitzblitz.shopfinder.model.*
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,7 +8,7 @@ import retrofit2.http.Path
 interface Webservice {
 
     @GET("cities")
-    fun getAllCities(): Single<List<City>?>
+    fun getAllCities(): Single<Data>
 
     @GET("city/{cityId}/malls")
     fun getMallsByCity(@Path("cityId") cityId: String): Single<List<Mall>?>

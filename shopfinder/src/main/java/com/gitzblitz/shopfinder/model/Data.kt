@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class Data(
     @Json(name = "cities")
-    val cities: List<City>
+    val cities: List<City> = listOf()
 )
 
 data class City(
