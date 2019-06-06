@@ -2,6 +2,11 @@
 This is a project that uses the ShopFinder Library API module
 
 # Library
+Add the library to your app module `Build.gradle` file
+
+```gradle
+implementation 'com.github.gitzblitz:Shopper:1.0.0'
+```
 Access the public methods of the API from the `WebServiceFacade.kt` . Instantiate an object of the facade
 
 
