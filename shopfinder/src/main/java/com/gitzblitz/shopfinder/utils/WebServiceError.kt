@@ -4,6 +4,7 @@ import android.util.Log
 import retrofit2.HttpException
 import java.net.SocketException
 import java.net.UnknownHostException
+import java.net.UnknownServiceException
 
 object WebServiceError {
     val TAG: String = WebServiceError::class.java.simpleName
@@ -16,9 +17,14 @@ object WebServiceError {
             is HttpException -> handleHTTPExceptions(e)
             is UnknownHostException -> handleUnknownHostException(e)
             is SocketException -> handleSocketException(e)
+            is UnknownServiceException ->handleUnknownServiceException(e)
             else -> handleOtherExceptions(e)
 
         }
+    }
+
+    private fun handleUnknownServiceException(e: UnknownServiceException) {
+        logException("Unknown service Exception", e)
     }
 
     private fun handleOtherExceptions(e: Throwable) {
