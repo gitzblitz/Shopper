@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class Data(
     @Json(name = "cities")
-    val cities: List<City> = listOf()
+    val cities: List<City>? = listOf()
 )
 
 data class City(
@@ -18,16 +18,16 @@ data class City(
 
 data class Mall(
     @Json(name = "id")
-    val id: Int = -1,
+    var id: Int = -1,
     @Json(name = "name")
-    val name: String = "",
+    var name: String = "",
     @Json(name = "shops")
-    val shops: List<Shop> = listOf()
+    var shops: List<Shop> = listOf()
 )
 
 data class Shop(
     @Json(name = "id")
-    val id: Int = -1,
+    var id: Int = -1,
     @Json(name = "name")
-    val name: String = ""
+    var name: String = ""
 )
