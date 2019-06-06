@@ -1,9 +1,12 @@
 package com.gitzblitz.shopfinder
 
+import android.util.Log
 import com.gitzblitz.shopfinder.model.City
+import com.gitzblitz.shopfinder.model.Data
 import com.gitzblitz.shopfinder.model.Mall
 import com.gitzblitz.shopfinder.model.Shop
 import com.gitzblitz.shopfinder.utils.WebServiceError
+import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
 object ServiceImpl {
@@ -19,7 +22,7 @@ object ServiceImpl {
             .observeOn(Schedulers.io())
             .subscribe { result, error ->
                 result.let {
-                    cities = it.cities
+                    cities = it.cities?: listOf()
                 }
                 WebServiceError.handleError(error)
             }
@@ -32,12 +35,13 @@ object ServiceImpl {
 
         service.getMallsByCity(cityId)
             .subscribeOn(Schedulers.io())
-            .subscribe { result, error ->
+            .subscribe({ result ->
                 result.let {
                     malls = it ?: listOf()
                 }
+            }, { error ->
                 WebServiceError.handleError(error)
-            }
+            })
 
         return malls
     }
@@ -58,11 +62,11 @@ object ServiceImpl {
         var city = City()
         service.getCity(cityId)
             .subscribeOn(Schedulers.io())
-            .subscribe { result, error ->
+            .subscribe({ result ->
                 city = result
+            }, { error ->
                 WebServiceError.handleError(error)
-            }
-
+            })
         return city
     }
 
@@ -71,10 +75,11 @@ object ServiceImpl {
 
         service.getShop(cityId, mallId, shopId)
             .subscribeOn(Schedulers.io())
-            .subscribe { result, error ->
+            .subscribe({ result ->
                 shop = result
+            }, { error ->
                 WebServiceError.handleError(error)
-            }
+            })
 
         return shop
 

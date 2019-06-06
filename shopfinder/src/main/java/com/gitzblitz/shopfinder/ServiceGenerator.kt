@@ -30,7 +30,7 @@ object ServiceGenerator {
         .build()
 
 
-    fun provideWebService(): Webservice = getRetrofitAdapter("").create(Webservice::class.java)
+    fun provideWebService(): Webservice = getRetrofitAdapter("http://www.mocky.io/v2/5b7e8bc03000005c0084c210/").create(Webservice::class.java)
 
 
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
