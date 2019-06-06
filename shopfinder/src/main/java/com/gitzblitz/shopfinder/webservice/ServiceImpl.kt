@@ -1,6 +1,7 @@
 package com.gitzblitz.shopfinder.webservice
 
 import com.gitzblitz.shopfinder.model.City
+import com.gitzblitz.shopfinder.model.Data
 import com.gitzblitz.shopfinder.model.Mall
 import com.gitzblitz.shopfinder.model.Shop
 import com.gitzblitz.shopfinder.utils.WebServiceError
@@ -12,19 +13,16 @@ object ServiceImpl {
 
 
     fun getCities(): List<City> {
-        var cities = listOf<City>()
 
-        service.getAllCities()
+     return  service.getAllCities()
             .subscribeOn(Schedulers.io())
-            .observeOn(Schedulers.io())
-            .subscribe { result, error ->
-                result.let {
-                    cities = it.cities?: listOf()
-                }
-                WebServiceError.handleError(error)
-            }
-        return cities
-
+         .map {
+             return@map  it.cities
+         }.onErrorReturn {
+             WebServiceError.handleError(it)
+             return@onErrorReturn listOf<City>()
+         }
+         .blockingGet()?: listOf()
     }
 
     fun getMallsByCity(cityId: String): List<Mall> {
